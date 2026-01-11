@@ -25,7 +25,7 @@ struct PFDSimulatorApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PFDView()
         }
         .modelContainer(sharedModelContainer)
     }
