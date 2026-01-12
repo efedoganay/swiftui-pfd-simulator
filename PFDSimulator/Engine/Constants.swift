@@ -5,6 +5,7 @@
 //  Created by Fikret Efe Doğanay on 9.01.2026.
 //
 import SwiftUI
+import CoreMotion
 
 enum AttitudeLayout {
     static let scale: CGFloat = 0.7
@@ -17,7 +18,7 @@ enum AttitudeLayout {
         )
     }
 
-    static func skyRect(size: CGSize, canvasSize: CGSize) -> CGRect {
+    static func skyRect(size: CGSize, canvasSize: CGSize, pitch: CGFloat? = nil, yaw: CGFloat? = nil, roll: CGFloat? = nil) -> CGRect {
         let originX = (canvasSize.width  - size.width)  / 2
         let originY = (canvasSize.height - size.width) / 2
 
