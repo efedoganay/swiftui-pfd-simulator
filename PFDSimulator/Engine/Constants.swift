@@ -48,10 +48,15 @@ enum degreeInterval {
 }
 
 enum degreeRatios {
-    static let vertPixelbyDegree = 0.0425
+    // Her derece = indicator yarı yüksekliğinin %4.25'i
+    static let vertPixelbyDegree: CGFloat = 0.0425
     
-    static func vertOffset(degree: CGFloat, size:CGSize) -> CGFloat {
-        vertPixelbyDegree * degree * (size.height/4)
+    /// Indicator boyutu üzerinden dikey offset hesaplar
+    /// - Parameters:
+    ///   - degree: Derece değeri
+    ///   - indicatorSize: Indicator'un bir kenarı (kare olduğu için)
+    static func vertOffset(degree: CGFloat, indicatorSize: CGFloat) -> CGFloat {
+        return degree * vertPixelbyDegree * (indicatorSize / 2)
     }
 }
 
@@ -92,17 +97,17 @@ enum radiusRatios {
 enum linePos {
     
     static func xPos(size: CGSize, degree: CGFloat) -> (CGFloat, CGFloat) {
-        let indicatorWidth = size.width * AttitudeLayout.scale
+        let indicatorSize = min(size.width, size.height) * AttitudeLayout.scale
         let centerX = size.width / 2
-        let lineWidth = widthRatios.degreeLineWidth(degree: degree, size: CGSize(width: indicatorWidth, height: indicatorWidth))
+        let lineWidth = widthRatios.degreeLineWidth(degree: degree, size: CGSize(width: indicatorSize, height: indicatorSize))
         
         return (centerX - lineWidth / 2, centerX + lineWidth / 2)
     }
     
-    static func yPos(size: CGSize, degree: CGFloat, isNegative: Bool = false) -> CGFloat {
-        let indicatorWidth = size.height * AttitudeLayout.scale
+    static func yPos(size: CGSize, degree: CGFloat) -> CGFloat {
+        let indicatorSize = min(size.width, size.height) * AttitudeLayout.scale
         let centerY = size.height / 2
-        let offset = degreeRatios.vertOffset(degree: degree, size: CGSize(width: indicatorWidth, height: indicatorWidth))
+        let offset = degreeRatios.vertOffset(degree: degree, indicatorSize: indicatorSize)
         
         return centerY - offset
     }

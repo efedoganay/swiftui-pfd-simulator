@@ -47,7 +47,6 @@ struct AttitudeIndicator: View {
                     with:.color(Color(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0))
                 )
             }
-            .background(Color.black)
     }
 }
 
