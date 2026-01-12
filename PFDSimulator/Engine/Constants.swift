@@ -6,8 +6,45 @@
 //
 import SwiftUI
 
+enum AttitudeLayout {
+    static let scale: CGFloat = 0.7
+    static let cornerRadiusRatio: CGFloat = 30/275
+
+    static func cornerRadius(size: CGSize) -> CGSize {
+        CGSize(
+            width: size.width * cornerRadiusRatio,
+            height: size.height * cornerRadiusRatio
+        )
+    }
+
+    static func skyRect(size: CGSize, canvasSize: CGSize) -> CGRect {
+        let originX = (canvasSize.width  - size.width)  / 2
+        let originY = (canvasSize.height - size.width) / 2
+
+        return CGRect(
+            x: originX,
+            y: originY,
+            width: size.width,
+            height: size.width / 2
+        )
+    }
+
+    static func terrainRect(size: CGSize, canvasSize: CGSize) -> CGRect {
+        let originX = (canvasSize.width  - size.width)  / 2
+        let originY = (canvasSize.height - size.width) / 2
+
+        return CGRect(
+            x: originX,
+            y: originY + size.width / 2,
+            width: size.width,
+            height: size.width / 2
+        )
+    }
+}
+
+
 enum degreeInterval {
-    static let degrees = stride(from: -20.0, to: 17.5, by: 2.5)
+    static let degrees = stride(from: -20.0, to: 20.0, by: 2.5)
 }
 
 enum degreeRatios {
@@ -55,12 +92,18 @@ enum radiusRatios {
 enum linePos {
     
     static func xPos(size: CGSize, degree: CGFloat) -> (CGFloat, CGFloat) {
-        ((size.width/2) - (widthRatios.degreeLineWidth(degree: degree, size: size) / 2),
-        (size.width/2) + (widthRatios.degreeLineWidth(degree: degree, size: size) / 2))
+        let indicatorWidth = size.width * AttitudeLayout.scale
+        let centerX = size.width / 2
+        let lineWidth = widthRatios.degreeLineWidth(degree: degree, size: CGSize(width: indicatorWidth, height: indicatorWidth))
+        
+        return (centerX - lineWidth / 2, centerX + lineWidth / 2)
     }
     
     static func yPos(size: CGSize, degree: CGFloat, isNegative: Bool = false) -> CGFloat {
-        isNegative ? size.width + degreeRatios.vertOffset(degree: degree, size: size) : size.self.width - degreeRatios.vertOffset(degree: degree, size: size)
+        let indicatorWidth = size.height * AttitudeLayout.scale
+        let centerY = size.height / 2
+        let offset = degreeRatios.vertOffset(degree: degree, size: CGSize(width: indicatorWidth, height: indicatorWidth))
+        
+        return centerY - offset
     }
-    
 }
