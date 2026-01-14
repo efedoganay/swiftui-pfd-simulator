@@ -8,7 +8,8 @@ import SwiftUI
 import CoreMotion
 
 enum AttitudeLayout {
-    static let scale: CGFloat = 0.9
+    static let scale: CGFloat = 0.7
+    static let fixedWindowScale: CGFloat = 0.5
     static let cornerRadiusRatio: CGFloat = 30/275
     
     static let skyColor = Color(red: 0.0, green: 128.0/255.0, blue: 1.0)
@@ -21,38 +22,27 @@ enum AttitudeLayout {
         )
     }
 
-    static func skyRect(size: CGSize, canvasSize: CGSize, pitch: CGFloat? = nil, yaw: CGFloat? = nil, roll: CGFloat? = nil) -> CGRect {
-        let originX = (canvasSize.width  - size.width)  / 2
-        let originY = (canvasSize.height - size.width) / 2
-
+    static func skyRect(size: CGSize) -> CGRect {
         return CGRect(
-            x: originX,
-            y: originY,
+            x: -size.width / 2,
+            y: -size.width / 2,
             width: size.width,
             height: size.width / 2
         )
     }
-    
-    static func horizonLine(size: CGSize, canvasSize: CGSize) -> Path {
-        let skyRect = skyRect(size: size, canvasSize: canvasSize)
-        
+    static func terrainRect(size: CGSize) -> CGRect {
+        return CGRect(
+            x: -size.width / 2,
+            y: 0,
+            width: size.width,
+            height: size.width / 2
+        )
+    }
+    static func horizonLine(size: CGSize) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: skyRect.minX, y: skyRect.maxY))
-        path.addLine(to: CGPoint(x: skyRect.maxX, y: skyRect.maxY))
-        
+        path.move(to: CGPoint(x: -size.width / 2, y: 0))
+        path.addLine(to: CGPoint(x: size.width / 2, y: 0))
         return path
-    }
-
-    static func terrainRect(size: CGSize, canvasSize: CGSize) -> CGRect {
-        let originX = (canvasSize.width  - size.width)  / 2
-        let originY = (canvasSize.height - size.width) / 2
-
-        return CGRect(
-            x: originX,
-            y: originY + size.width / 2,
-            width: size.width,
-            height: size.width / 2
-        )
     }
     
 }
