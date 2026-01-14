@@ -19,14 +19,16 @@ struct AttitudeIndicator: View {
                 width: size.width * AttitudeLayout.scale,
                 height: size.height * AttitudeLayout.scale
             )
+            let indicatorSize = min(size.width, size.height) * AttitudeLayout.scale
+            let maxOffset = AttitudeLayout.maxPitchOffset(indicatorSize: indicatorSize)
             
             context.fill(
-                Path(AttitudeLayout.skyRect(size: inSize)),
+                Path(AttitudeLayout.skyRect(size: inSize, maxOffset: maxOffset)),
                 with:.color(AttitudeLayout.skyColor)
             )
             
             context.fill(
-                Path(AttitudeLayout.terrainRect(size: inSize)),
+                Path(AttitudeLayout.terrainRect(size: inSize, maxOffset: maxOffset)),
                 with:.color(AttitudeLayout.terrainColor)
             )
             

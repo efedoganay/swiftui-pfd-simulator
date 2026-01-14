@@ -16,6 +16,7 @@ struct RotatingContentView: View {
             let indicatorSize = min(size.width, size.height) * AttitudeLayout.scale
             let inSize = CGSize(width: indicatorSize, height: indicatorSize)
             let pitchOffset = degreeRatios.vertOffset(degree: pitch, indicatorSize: indicatorSize)
+            let maxOffset = AttitudeLayout.maxPitchOffset(indicatorSize: indicatorSize)
             
             context.translateBy(x: size.width / 2, y: size.height / 2)
             
@@ -24,12 +25,12 @@ struct RotatingContentView: View {
             context.translateBy(x: 0, y: pitchOffset)
             
             context.fill(
-                Path(AttitudeLayout.skyRect(size: inSize)),
+                Path(AttitudeLayout.skyRect(size: inSize, maxOffset: maxOffset)),
                 with: .color(AttitudeLayout.skyColor)
             )
             
             context.fill(
-                Path(AttitudeLayout.terrainRect(size: inSize)),
+                Path(AttitudeLayout.terrainRect(size: inSize, maxOffset: maxOffset)),
                 with: .color(AttitudeLayout.terrainColor)
             )
             
@@ -39,7 +40,6 @@ struct RotatingContentView: View {
                 lineWidth: 3
             )
             
-            // === Pitch Ladder ===
             for degree in degreeInterval.degrees {
                 if degree == 0.0 { continue }
                 

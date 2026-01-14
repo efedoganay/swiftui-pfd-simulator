@@ -22,22 +22,28 @@ enum AttitudeLayout {
         )
     }
 
-    static func skyRect(size: CGSize) -> CGRect {
+    static func maxPitchOffset(indicatorSize: CGFloat) -> CGFloat {
+        return degreeRatios.vertOffset(degree: 90, indicatorSize: indicatorSize)
+    }
+    
+    static func skyRect(size: CGSize, maxOffset: CGFloat) -> CGRect {
         return CGRect(
             x: -size.width / 2,
-            y: -size.width / 2,
+            y: -size.width / 2 - maxOffset,
             width: size.width,
-            height: size.width / 2
+            height: size.width / 2 + maxOffset
         )
     }
-    static func terrainRect(size: CGSize) -> CGRect {
+    
+    static func terrainRect(size: CGSize, maxOffset: CGFloat) -> CGRect {
         return CGRect(
             x: -size.width / 2,
             y: 0,
             width: size.width,
-            height: size.width / 2
+            height: size.width / 2 + maxOffset
         )
     }
+    
     static func horizonLine(size: CGSize) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: -size.width / 2, y: 0))
@@ -49,17 +55,12 @@ enum AttitudeLayout {
 
 
 enum degreeInterval {
-    static let degrees = stride(from: -20.0, to: 22.5, by: 2.5)
+    static let degrees = stride(from: -90.0, to: 90.0, by: 2.5)
 }
 
 enum degreeRatios {
-    // Her derece = indicator yarı yüksekliğinin %4.25'i
     static let vertPixelbyDegree: CGFloat = 0.0425
     
-    /// Indicator boyutu üzerinden dikey offset hesaplar
-    /// - Parameters:
-    ///   - degree: Derece değeri
-    ///   - indicatorSize: Indicator'un bir kenarı (kare olduğu için)
     static func vertOffset(degree: CGFloat, indicatorSize: CGFloat) -> CGFloat {
         return degree * vertPixelbyDegree * (indicatorSize / 2)
     }

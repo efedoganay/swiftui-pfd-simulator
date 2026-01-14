@@ -21,9 +21,14 @@ class MotionDataProvider: ObservableObject {
         motionProvider.deviceMotionUpdateInterval = 1/50
         motionProvider.startDeviceMotionUpdates(to:.main) {[weak self] data, error in
             guard let motion = data?.attitude else { return }
-            self?.pitch = motion.pitch
-            self?.yaw = motion.yaw
-            self?.roll = motion.roll
+            
+            let rawPitch = (motion.pitch * 180 / .pi)
+            self?.pitch = max(-15, min(rawPitch, 30))
+            
+            let rawRoll = motion.roll * 180 / .pi
+            self?.roll = max(-25, min(rawRoll, 25)) * .pi / 180
+            
+            self?.yaw = motion.yaw * 180 / .pi
         }
     }
 }

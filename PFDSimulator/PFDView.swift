@@ -18,13 +18,11 @@ struct PFDView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 
-                // Dönen içerik - pitch/roll tek yerden uygulanıyor
                 RotatingContentView(
                     pitch: motionManager.pitch,
                     roll: motionManager.roll
                 )
                 .frame(width: geo.size.width, height: geo.size.height)
-                // Sabit mask penceresi
                 .mask(
                     RoundedRectangle(cornerRadius: indicatorSize * radiusRatios.skyTerrainCornerRadius)
                         .frame(width: indicatorSize, height: indicatorSize)
