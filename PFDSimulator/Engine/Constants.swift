@@ -8,8 +8,11 @@ import SwiftUI
 import CoreMotion
 
 enum AttitudeLayout {
-    static let scale: CGFloat = 0.7
+    static let scale: CGFloat = 0.9
     static let cornerRadiusRatio: CGFloat = 30/275
+    
+    static let skyColor = Color(red: 0.0, green: 128.0/255.0, blue: 1.0)
+    static let terrainColor = Color(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0)
 
     static func cornerRadius(size: CGSize) -> CGSize {
         CGSize(
@@ -29,6 +32,16 @@ enum AttitudeLayout {
             height: size.width / 2
         )
     }
+    
+    static func horizonLine(size: CGSize, canvasSize: CGSize) -> Path {
+        let skyRect = skyRect(size: size, canvasSize: canvasSize)
+        
+        var path = Path()
+        path.move(to: CGPoint(x: skyRect.minX, y: skyRect.maxY))
+        path.addLine(to: CGPoint(x: skyRect.maxX, y: skyRect.maxY))
+        
+        return path
+    }
 
     static func terrainRect(size: CGSize, canvasSize: CGSize) -> CGRect {
         let originX = (canvasSize.width  - size.width)  / 2
@@ -41,11 +54,12 @@ enum AttitudeLayout {
             height: size.width / 2
         )
     }
+    
 }
 
 
 enum degreeInterval {
-    static let degrees = stride(from: -20.0, to: 20.0, by: 2.5)
+    static let degrees = stride(from: -20.0, to: 22.5, by: 2.5)
 }
 
 enum degreeRatios {

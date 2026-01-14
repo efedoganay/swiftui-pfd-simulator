@@ -11,6 +11,7 @@ struct PitchLadder: View {
         Canvas { context, size in
                         
             for degree in degreeInterval.degrees {
+                if(degree == 0.0) {continue}
                 var linePath = Path()
                 linePath.move(to: CGPoint(x: linePos.xPos(size: size, degree: degree).0, y: linePos.yPos(size: size, degree: degree)))
                 linePath.addLine(to: CGPoint(x: linePos.xPos(size: size, degree: degree).1, y: linePos.yPos(size: size, degree: degree)))

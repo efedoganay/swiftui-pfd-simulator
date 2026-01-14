@@ -9,45 +9,39 @@ import SwiftData
 
 struct AttitudeIndicator: View {
     @StateObject private var motionManager = MotionDataProvider()
+    
     var body: some View {
         Canvas { context, size in
             
-            let cgSize = CGSize(width: size.width * AttitudeLayout.scale, height: size.height * AttitudeLayout.scale)
-            
-            let rectSkyRounded = UIBezierPath(
-                roundedRect: AttitudeLayout.skyRect(
-                    size: cgSize,
-                    canvasSize: size
-                ),
-                byRoundingCorners:[.topLeft, .topRight],
-                cornerRadii: CGSize(
-                    width: size.width * radiusRatios.skyTerrainCornerRadius,
-                    height: size.height * radiusRatios.skyTerrainCornerRadius
-                )
+            let inSize = CGSize(
+                width: size.width * AttitudeLayout.scale,
+                height: size.height * AttitudeLayout.scale
             )
             
             context.fill(
-                Path(rectSkyRounded.cgPath),
-                with:.color(Color(red: 0.0, green: 128.0/255.0, blue: 1.0))
-            )
-            
-            let rectTerrainRounded = UIBezierPath(
-                roundedRect: AttitudeLayout.terrainRect(
-                    size: cgSize,
-                    canvasSize: size
+                Path(AttitudeLayout.skyRect(size: inSize,
+                                            canvasSize: size
+                                           )
                 ),
-                byRoundingCorners:[.bottomLeft, .bottomRight],
-                cornerRadii: CGSize(
-                    width: size.width * radiusRatios.skyTerrainCornerRadius,
-                    height: size.height * radiusRatios.skyTerrainCornerRadius
-                )
+                with:.color(AttitudeLayout.skyColor)
             )
             
             context.fill(
-                Path(rectTerrainRounded.cgPath),
-                with:.color(Color(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0))
+                Path(AttitudeLayout.terrainRect(size: inSize,
+                                                canvasSize: size
+                                               )
+                ),
+                with:.color(AttitudeLayout.terrainColor)
+            )
+            
+            context.stroke(AttitudeLayout.horizonLine(size: inSize,
+                                                      canvasSize: size),
+                           with: .color(.white),
+                           lineWidth: 3
             )
         }
+        .background(Color.green)
+
     }
 }
 
