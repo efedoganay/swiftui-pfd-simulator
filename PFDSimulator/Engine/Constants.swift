@@ -14,14 +14,14 @@ enum AttitudeLayout {
     
     static let skyColor = Color(red: 0.0, green: 128.0/255.0, blue: 1.0)
     static let terrainColor = Color(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0)
-
+    
     static func cornerRadius(size: CGSize) -> CGSize {
         CGSize(
             width: size.width * cornerRadiusRatio,
             height: size.height * cornerRadiusRatio
         )
     }
-
+    
     static func maxPitchOffset(indicatorSize: CGFloat) -> CGFloat {
         return degreeRatios.vertOffset(degree: 90, indicatorSize: indicatorSize)
     }
@@ -75,7 +75,7 @@ enum widthRatios {
         }
         let absDegree = abs(degree)
         var lineWidth: CGFloat = 0.0
-                
+        
         if (absDegree.truncatingRemainder(dividingBy: 10.0) == 0){
             lineWidth = widthRatio * 10.0 * size.width
         }
@@ -116,5 +116,11 @@ enum linePos {
         let offset = degreeRatios.vertOffset(degree: degree, indicatorSize: indicatorSize)
         
         return centerY - offset
+    }
+    
+    static let degreeText: (Double) -> Text = { degree in
+        Text("\(Int(degree))")
+            .font(.custom("LetterGothicStd-Bold", size: 25.5))
+            .foregroundColor(.white)
     }
 }

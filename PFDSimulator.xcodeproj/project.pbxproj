@@ -6,13 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B2E3EB802F187C2400C3D605 /* LetterGothicStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2E3EB7F2F187C2400C3D605 /* LetterGothicStd-Bold.otf */; };
+		B2E3EB812F187C2400C3D605 /* LetterGothicStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2E3EB7E2F187C2400C3D605 /* LetterGothicStd.otf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B289A4122F11D53A00AF109B /* PFDSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFDSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2E3EB7E2F187C2400C3D605 /* LetterGothicStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterGothicStd.otf; sourceTree = "<group>"; };
+		B2E3EB7F2F187C2400C3D605 /* LetterGothicStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LetterGothicStd-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B2E3EB832F187D8300C3D605 /* Exceptions for "PFDSimulator" folder in "PFDSimulator" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B289A4112F11D53A00AF109B /* PFDSimulator */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B289A4142F11D53A00AF109B /* PFDSimulator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B2E3EB832F187D8300C3D605 /* Exceptions for "PFDSimulator" folder in "PFDSimulator" target */,
+			);
 			path = PFDSimulator;
 			sourceTree = "<group>";
 		};
@@ -34,6 +54,8 @@
 			children = (
 				B289A4142F11D53A00AF109B /* PFDSimulator */,
 				B289A4132F11D53A00AF109B /* Products */,
+				B2E3EB7E2F187C2400C3D605 /* LetterGothicStd.otf */,
+				B2E3EB7F2F187C2400C3D605 /* LetterGothicStd-Bold.otf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +131,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E3EB802F187C2400C3D605 /* LetterGothicStd-Bold.otf in Resources */,
+				B2E3EB812F187C2400C3D605 /* LetterGothicStd.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +280,7 @@
 				DEVELOPMENT_TEAM = PARJ558HBR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PFDSimulator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +313,7 @@
 				DEVELOPMENT_TEAM = PARJ558HBR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PFDSimulator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
