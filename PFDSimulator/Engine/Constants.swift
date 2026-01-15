@@ -120,7 +120,7 @@ enum linePos {
     
     static let degreeText: (Double) -> Text = { degree in
         Text("\(Int(degree))")
-            .font(.custom("LetterGothicStd-Bold", size: 25.5))
+            .font(.custom("LetterGothicStd-Bold", size: 18.5))
             .foregroundColor(.white)
     }
 }

@@ -25,7 +25,7 @@ struct PFDView: View {
                 .frame(width: geo.size.width, height: geo.size.height)
                 .mask(
                     RoundedRectangle(cornerRadius: indicatorSize * radiusRatios.skyTerrainCornerRadius)
-                        .frame(width: indicatorSize, height: indicatorSize)
+                        .frame(width: 275, height: 275)
                 )
             }
         }
