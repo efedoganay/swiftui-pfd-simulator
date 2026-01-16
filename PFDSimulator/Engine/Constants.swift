@@ -20,7 +20,7 @@ enum AttitudeLayout {
     static let acSymbolHeight: CGFloat = 25
     static let acBarHeight: CGFloat = 10
     static let acVertBarWidth: CGFloat = 10
-    static let acPositionRatio: CGFloat = 0.60  // Sol kenardan %62
+    static let acPositionRatio: CGFloat = 0.60
     
     static func cornerRadius(size: CGSize) -> CGSize {
         CGSize(

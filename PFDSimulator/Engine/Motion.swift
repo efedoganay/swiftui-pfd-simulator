@@ -16,11 +16,10 @@ class MotionDataProvider: ObservableObject {
     @Published var pitch = 0.0
     @Published var yaw = 0.0
     @Published var roll = 0.0
-    @Published var heading = 0.0  // Magnetic heading
+    @Published var heading = 0.0
     
     init() {
         motionProvider.deviceMotionUpdateInterval = 1/50
-        // xMagneticNorthZVertical: Magnetic north referanslı
         motionProvider.startDeviceMotionUpdates(using: .xMagneticNorthZVertical, to: .main) { [weak self] data, error in
             guard let data = data else { return }
             let motion = data.attitude
@@ -33,7 +32,6 @@ class MotionDataProvider: ObservableObject {
             
             self?.yaw = motion.yaw * 180 / .pi
             
-            // Magnetic heading (0-360)
             self?.heading = data.heading
         }
     }
