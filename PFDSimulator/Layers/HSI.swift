@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct HSI: PFDLayer {
+    var yaw: CGFloat = 0
+    
     func draw(context: inout GraphicsContext, size: CGSize) {
         let r = HSILayout.radius
         
@@ -38,11 +40,15 @@ struct HSI: PFDLayer {
                 let textX = Darwin.sin(radian) * textOffset
                 let textY = -Darwin.cos(radian) * textOffset
                 
+                var textContext = context
+                textContext.translateBy(x: textX, y: textY)
+                textContext.rotate(by: .degrees(yaw))
+                
                 let degreeText = Text("\(degree / 10)")
                     .font(.custom("LetterGothicStd-Bold", size: fontSize))
                     .foregroundColor(.white)
-                let resolved = context.resolve(degreeText)
-                context.draw(resolved, at: CGPoint(x: textX, y: textY))
+                let resolved = textContext.resolve(degreeText)
+                textContext.draw(resolved, at: .zero)
             }
         }
     }

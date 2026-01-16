@@ -14,8 +14,8 @@ struct HSIContentView: View {
     var body: some View {
         Canvas { context, size in
             context.translateBy(x: size.width / 2, y: HSILayout.radius)
-            context.rotate(by: .radians(-yaw))
-            HSI().draw(context: &context, size: size)
+            context.rotate(by: .degrees(-yaw))
+            HSI(yaw: yaw).draw(context: &context, size: size)
         }
         .frame(width: 315, height: 80)
         .clipped()

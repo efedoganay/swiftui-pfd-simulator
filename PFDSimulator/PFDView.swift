@@ -30,7 +30,10 @@ struct PFDView: View {
                 
                 StaticContentView()
                 
-                HSIContentView(yaw: motionManager.yaw, geoSize: geo.size)
+                HSIContentView(
+                    yaw: motionManager.yaw,
+                    geoSize: geo.size
+                )
             }
             
         }
