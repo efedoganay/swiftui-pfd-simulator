@@ -27,6 +27,7 @@ struct PitchLadder: PFDLayer {
             if degree.remainder(dividingBy: 10.0) == 0 {
                 let resolvedText = context.resolve(linePos.degreeText(abs(degree)))
                 context.draw(resolvedText, at: CGPoint(x: (-lineWidth / 2) - 15, y: yPos + 2))
+                context.draw(resolvedText, at: CGPoint(x: (lineWidth / 2) + 15, y: yPos + 2))
             }
         }
     }

@@ -27,7 +27,12 @@ struct PFDView: View {
                     RoundedRectangle(cornerRadius: indicatorSize * radiusRatios.skyTerrainCornerRadius)
                         .frame(width: 275, height: 275)
                 )
+                
+                StaticContentView()
+                
+                HSIContentView(yaw: motionManager.yaw, geoSize: geo.size)
             }
+            
         }
     }
 }

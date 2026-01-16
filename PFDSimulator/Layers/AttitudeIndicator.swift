@@ -10,7 +10,7 @@ import SwiftData
 struct AttitudeIndicator: PFDLayer {
     
     func draw(context: inout GraphicsContext, size: CGSize) {
-        let indicatorSize = min(size.width, size.height) * 0.9
+        let indicatorSize = min(size.width, size.height) * AttitudeLayout.scale
         let inSize = CGSize(width: indicatorSize, height: indicatorSize)
         let maxOffset = AttitudeLayout.maxPitchOffset(indicatorSize: indicatorSize)
         
@@ -30,7 +30,8 @@ struct AttitudeIndicator: PFDLayer {
         context.stroke(
             AttitudeLayout.horizonLine(size: inSize),
             with: .color(.white),
-            lineWidth: 3
+            lineWidth: 2
         )
     }
 }
+

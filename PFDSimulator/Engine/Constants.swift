@@ -8,12 +8,19 @@ import SwiftUI
 import CoreMotion
 
 enum AttitudeLayout {
-    static let scale: CGFloat = 0.7
+    static let scale: CGFloat = 0.9
     static let fixedWindowScale: CGFloat = 0.5
     static let cornerRadiusRatio: CGFloat = 30/275
     
     static let skyColor = Color(red: 0.0, green: 128.0/255.0, blue: 1.0)
     static let terrainColor = Color(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0)
+    static let hsiColor = Color(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0)
+    
+    static let acSymbolWidth: CGFloat = 77
+    static let acSymbolHeight: CGFloat = 25
+    static let acBarHeight: CGFloat = 10
+    static let acVertBarWidth: CGFloat = 10
+    static let acPositionRatio: CGFloat = 0.60  // Sol kenardan %62
     
     static func cornerRadius(size: CGSize) -> CGSize {
         CGSize(
@@ -124,3 +131,9 @@ enum linePos {
             .foregroundColor(.white)
     }
 }
+
+enum HSILayout {
+    static let topPadding = 232.5
+    static let radius = 195.5
+}
+
