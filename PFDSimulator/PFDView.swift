@@ -31,7 +31,7 @@ struct PFDView: View {
                 StaticContentView()
                 
                 HSIContentView(
-                    yaw: motionManager.yaw,
+                    heading: motionManager.heading,
                     geoSize: geo.size
                 )
             }

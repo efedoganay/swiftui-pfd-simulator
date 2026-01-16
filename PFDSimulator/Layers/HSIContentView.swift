@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HSIContentView: View {
-    var yaw: CGFloat
+    var heading: CGFloat
     var geoSize: CGSize
     
     var body: some View {
         Canvas { context, size in
             context.translateBy(x: size.width / 2, y: HSILayout.radius)
-            context.rotate(by: .degrees(-yaw))
-            HSI(yaw: yaw).draw(context: &context, size: size)
+            context.rotate(by: .degrees(-heading))
+            HSI(heading: heading).draw(context: &context, size: size)
         }
         .frame(width: 315, height: 80)
         .clipped()
@@ -27,5 +27,5 @@ struct HSIContentView: View {
 }
 
 #Preview {
-    HSIContentView(yaw: 0, geoSize: CGSize(width: 400, height: 800))
+    HSIContentView(heading: 0, geoSize: CGSize(width: 400, height: 800))
 }

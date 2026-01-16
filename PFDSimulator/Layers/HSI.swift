@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct HSI: PFDLayer {
-    var yaw: CGFloat = 0
+    var heading: CGFloat = 0
     
     func draw(context: inout GraphicsContext, size: CGSize) {
         let r = HSILayout.radius
@@ -42,7 +42,7 @@ struct HSI: PFDLayer {
                 
                 var textContext = context
                 textContext.translateBy(x: textX, y: textY)
-                textContext.rotate(by: .degrees(yaw))
+                textContext.rotate(by: .degrees(heading))
                 
                 let degreeText = Text("\(degree / 10)")
                     .font(.custom("LetterGothicStd-Bold", size: fontSize))
