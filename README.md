@@ -33,7 +33,7 @@ A realistic **Primary Flight Display (PFD)** simulator built entirely with Swift
 
 ## 📱 Screenshots
 
-![PFD Animation](animation.gif)
+<img src="animation.gif" height = "700" width="300" alt="PFD Animation">
 
 ---
 
