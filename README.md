@@ -33,7 +33,7 @@ A realistic **Primary Flight Display (PFD)** simulator built entirely with Swift
 
 ## 📱 Screenshots
 
-*Coming soon*
+![PFD Animation](animation.gif)
 
 ---
 
@@ -73,7 +73,7 @@ PFDSimulator/
 ### Motion Limits
 | Parameter | Min | Max |
 |-----------|-----|-----|
-| Pitch | -15° | +30° |
+| Pitch | -20° | +30° |
 | Roll | -25° | +25° |
 | Heading | 0° | 360° |
 
