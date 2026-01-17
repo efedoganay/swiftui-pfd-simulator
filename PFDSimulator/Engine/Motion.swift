@@ -25,7 +25,7 @@ class MotionDataProvider: ObservableObject {
             let motion = data.attitude
             
             let rawPitch = (motion.pitch * 180 / .pi)
-            self?.pitch = max(-15, min(rawPitch, 30))
+            self?.pitch = max(-20, min(rawPitch, 30))
             
             let rawRoll = motion.roll * 180 / .pi
             self?.roll = max(-25, min(rawRoll, 25)) * .pi / 180

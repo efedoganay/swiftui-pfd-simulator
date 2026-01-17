@@ -16,9 +16,8 @@ struct PitchLadder: PFDLayer {
         
         let frameHeight: CGFloat = 275
         let topMargin: CGFloat = 35
-        let bottomMargin: CGFloat = 20
         let topLimit = -(frameHeight / 2) + topMargin
-        let bottomLimit = (frameHeight / 2) - bottomMargin
+        let bottomLimit = frameHeight / 2
         
         let pitchOffset = pitch * degreeRatios.pixelsPerDegree
         
