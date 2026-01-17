@@ -31,6 +31,8 @@ struct AircraftSymbol: PFDLayer {
             vertBarWidth: vertBarWidth,
             top: top
         )
+        
+        drawCenterMarker(context: &context)
     }
     
     private func drawSymbolPair(
@@ -103,5 +105,12 @@ struct AircraftSymbol: PFDLayer {
         path.addLine(to: CGPoint(x: right, y: top + symbolHeight))
         path.closeSubpath()
         return path
+    }
+    
+    private func drawCenterMarker(context: inout GraphicsContext) {
+        let squareSize: CGFloat = 10
+        let squareRect = CGRect(x: -squareSize / 2, y: -squareSize / 2, width: squareSize, height: squareSize)
+        context.fill(Path(squareRect), with: .color(.black))
+        context.stroke(Path(squareRect), with: .color(.white), lineWidth: 2)
     }
 }

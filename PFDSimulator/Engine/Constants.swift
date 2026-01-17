@@ -62,38 +62,35 @@ enum AttitudeLayout {
 
 
 enum degreeInterval {
-    static let degrees = stride(from: -90.0, to: 90.0, by: 2.5)
+    static let degrees = stride(from: -40.0, to: 55.0, by: 2.5)
 }
 
 enum degreeRatios {
-    static let vertPixelbyDegree: CGFloat = 0.0425
+    static let pixelsPerDegree: CGFloat = 5.85
     
     static func vertOffset(degree: CGFloat, indicatorSize: CGFloat) -> CGFloat {
-        return degree * vertPixelbyDegree * (indicatorSize / 2)
+        return degree * pixelsPerDegree
     }
 }
 
 enum widthRatios {
-    static let widthRatio = 1.0/27.5
-    
     static func degreeLineWidth(degree: CGFloat, size: CGSize) -> CGFloat {
-        if (degree == 0.0){
+        if (degree == 0.0) {
             return size.width
         }
         let absDegree = abs(degree)
-        var lineWidth: CGFloat = 0.0
         
-        if (absDegree.truncatingRemainder(dividingBy: 10.0) == 0){
-            lineWidth = widthRatio * 10.0 * size.width
+        if (absDegree.truncatingRemainder(dividingBy: 10.0) == 0) {
+            return 100
         }
-        else if (absDegree.truncatingRemainder(dividingBy: 5.0) == 0){
-            lineWidth = widthRatio * 5.0 * size.width
+        else if (absDegree.truncatingRemainder(dividingBy: 5.0) == 0) {
+            return 50
         }
-        else if (absDegree.truncatingRemainder(dividingBy: 2.5) == 0){
-            lineWidth = widthRatio * 2.5 * size.width
+        else if (absDegree.truncatingRemainder(dividingBy: 2.5) == 0) {
+            return 25
         }
         
-        return lineWidth
+        return 0
     }
     
     static let firstLine = 1.0

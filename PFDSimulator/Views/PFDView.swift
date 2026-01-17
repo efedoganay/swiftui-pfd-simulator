@@ -30,6 +30,8 @@ struct PFDView: View {
                 
                 StaticContentView()
                 
+                BankAnglePointerView(roll: motionManager.roll)
+                
                 HSIContentView(
                     heading: motionManager.heading,
                     geoSize: geo.size

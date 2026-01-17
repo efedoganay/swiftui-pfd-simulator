@@ -11,8 +11,6 @@ struct RotatingContentView: View {
     var pitch: CGFloat
     var roll: CGFloat
     
-    var layers: [PFDLayer] = [AttitudeIndicator(), PitchLadder()]
-    
     var body: some View {
                 
         Canvas { context, size in
@@ -25,9 +23,8 @@ struct RotatingContentView: View {
             
             context.translateBy(x: 0, y: pitchOffset)
             
-            for layer in layers {
-                layer.draw(context: &context, size: size)
-            }
+            AttitudeIndicator().draw(context: &context, size: size)
+            PitchLadder(pitch: pitch).draw(context: &context, size: size)
         }
     }
 }
