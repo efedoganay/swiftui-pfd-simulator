@@ -1,4 +1,4 @@
-# ✈️ SwiftUI PFD Simulator
+# SwiftUI Primary Flight Display Simulator ✈️
 
 A realistic **Primary Flight Display (PFD)** simulator built entirely with SwiftUI. This app replicates the core instruments found in modern aircraft cockpits, using real device motion data to simulate pitch, roll, and heading.
 
